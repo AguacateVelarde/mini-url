@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { HomeComponent } from './pages/home/home.component';
 import { UrlsComponent } from './pages/urls/urls.component';
-import { ProfileComponent } from './pages/profile/profile.component';
+
 
 @NgModule({
   declarations: [
@@ -14,7 +14,6 @@ import { ProfileComponent } from './pages/profile/profile.component';
     HeaderComponent,
     HomeComponent,
     UrlsComponent,
-    ProfileComponent
   ],
   imports: [
     BrowserModule,
