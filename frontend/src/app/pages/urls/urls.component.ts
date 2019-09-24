@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./urls.component.scss']
 })
 export class UrlsComponent implements OnInit {
-
+  login:boolean = false
   constructor() { }
 
   ngOnInit() {
