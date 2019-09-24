@@ -1,0 +1,14 @@
+/* You can add global styles to this file, and also import other style files */
+@import "variables.scss";
+@import "../node_modules/bootstrap/scss/bootstrap.scss";
+@import url(https://fonts.googleapis.com/css?family=Asap|Bitter);
+$cuerpo : 'Asap', serif;
+$titulos : 'Bitter', serif;
+
+body {
+  font-family: $cuerpo !important;
+}
+
+h1 h2 h3 h4 h5 h6{
+  font-family: $titulos !important;
+}
