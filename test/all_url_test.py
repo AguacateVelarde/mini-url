@@ -67,5 +67,13 @@ class UrlAllTest(unittest.TestCase):
         self.assertEqual( response.status_code, 302 )
         self.assertEqual( response.location, urls[0]['url'] )
         
+    def test_url_error( self ):
+        response = self.app.get(
+            'u/238oh',             
+            follow_redirects=False
+        )
+        self.assertEqual( response.status_code, 302 )
+        self.assertEqual( response.location, 'http://localhost/' )
+        
 if __name__ == "__main__":
     unittest.main()

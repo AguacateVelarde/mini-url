@@ -83,5 +83,23 @@ class LoginRegisterTest(unittest.TestCase):
         self.assertEqual(response.status_code, 400)
         self.assertEqual( json.loads( response.data )['message']['password'],  "Password is necessary")
 
+    def test_login_error_bad_password( self ):
+        response = self.app.post(
+            '/user/login', 
+            data=dict(email="lg.velarde.andrade@gmail.com", password=""),
+            follow_redirects=False)
+        self.assertEqual(response.status_code, 400)
+        self.assertEqual( json.loads(response.data)['message'], 'Contraseña incorrecta' )
+
+    def test_login_error_bad_email( self ):
+        response = self.app.post(
+            '/user/login', 
+            data=dict(email="lg.velarde.andrade@hotmail.com", password="edison"),
+            follow_redirects=False)
+        self.assertEqual(response.status_code, 400)
+        self.assertEqual( json.loads(response.data)['message'], 'Email no encontrado' )
+
+
+        
 if __name__ == "__main__":
     unittest.main()

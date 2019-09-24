@@ -1,9 +1,6 @@
 from db import db
 import datetime 
 from sqlalchemy import Column, Integer, DateTime, Text, String
-from passlib.hash import pbkdf2_sha256 as sha256
-
-
 
 class UrlModel(db.Model):
     __tablename__ = "url"

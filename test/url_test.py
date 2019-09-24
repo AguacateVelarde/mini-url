@@ -47,6 +47,7 @@ class UrlTest(unittest.TestCase):
         self.assertEqual( response.status_code, 400 )
         self.assertEqual( json.loads( response.data )['message']['url'],  "Url is necessary")
         
+        
       
     def get_token(self):
         login_response = self.app.post(
