@@ -4,6 +4,7 @@ from flask import Flask, jsonify
 from db import db 
 import bcrypt
 from flask_jwt_extended import create_access_token
+import datetime
 
 class Register(Resource):
     def post(self):
@@ -24,7 +25,8 @@ class Register(Resource):
            }, 400
            
         user.save() 
-        access_token = create_access_token(identity=user.to_json())
+        expires = datetime.timedelta(days=15)
+        access_token = create_access_token(identity=user.to_json(), expires_delta=expires)
            
         return {
             "message" : 'Ok',
@@ -52,8 +54,8 @@ class Login(Resource):
                'message' : 'Contraseña incorrecta',
                'status_code' : 400
             }, 400
-        
-        access_token = create_access_token(identity=temporal_user.to_json())
+        expires = datetime.timedelta(days=15)
+        access_token = create_access_token(identity=temporal_user.to_json(), expires_delta=expires)
         return {
             "message" : 'Ok',
             "status_code" : 200,

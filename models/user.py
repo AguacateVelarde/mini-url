@@ -6,7 +6,7 @@ from passlib.hash import pbkdf2_sha256 as sha256
  
 class UserModel(db.Model):
     __tablename__ = "user"
-   # __table_args__ = { "schema": "mini_url" }
+    #__table_args__ = { "schema": "mini_url" }
 
     id_user = Column( Integer, primary_key = True )
     email = Column( String( 200 ), unique=True )
