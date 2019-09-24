@@ -24,7 +24,6 @@ class Url(Resource):
         current_user = get_jwt_identity()
         shorted_id = uuid.uuid1().hex
         url = UrlModel( current_user['id'], urls[0], shorted_id  )
-        print( url )
         url.save()
 
         return { 
