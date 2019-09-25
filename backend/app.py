@@ -25,11 +25,14 @@ def create_tables():
     db.create_all()
 
 api.add_resource(Url, '/url')
-api.add_resource(SendUrl, '/u/<url>', )
+api.add_resource(SendUrl, '/<url>', )
 api.add_resource(Login, '/user/login')
 api.add_resource(Register, '/user/register')
 api.add_resource(AllUrls, '/url/all')
 
 
 if __name__ == '__main__':
-    app.run(debug=True)  
+    from gevent.pywsgi import WSGIServer
+    app.debug = True 
+    http_server = WSGIServer(('', 5000), app)
+    http_server.serve_forever()  

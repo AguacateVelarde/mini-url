@@ -1,0 +1,36 @@
+version: '3'
+services:
+  nginx:
+    container_name: nginx_container
+    restart: always
+    image: nginx    
+    build: 
+      context: .
+      dockerfile: nginx/Dockerfile
+    volumes:
+     - ./frontend/dist/frontend:/usr/share/nginx/html
+    ports:
+      - "80:80"
+      - "443:443"
+    depends_on:
+      - flask_fondeadora
+    networks: 
+      - front_some-net
+
+  flask_fondeadora:
+    container_name: flask_fondeadora_container
+    restart: always
+    networks: 
+      - front_some-net
+    image: flask
+    build: ./backend
+    ports: 
+      - "5000:5000"
+    volumes:
+    - ./backend:/usr/src/app/server
+    env_file:
+     - .env
+
+networks:
+  front_some-net:
+    external: false

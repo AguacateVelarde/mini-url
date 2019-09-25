@@ -1,0 +1,47 @@
+#  My mini url :skull:
+
+Este proyecto es un acortador de url. El bakcend está trabajado con Flask y el frontend con Angular. Se ocupó Docker con docker compose para alzar los servicios y hacer el deploy. 
+
+## Estructura del proyecto 
+*  ### Backend 
+En la carpeta backend está el proyecto con flask. dentro está una carpeta llamada test donde contiene todos los testing realizados en unittest. Para correr los test se tiene, se tiene que encontrar en la carpeta raíz del backend y ejecutar 
+
+```
+python all_url_test.py
+python login_register_test.py
+python url_test.py
+```
+
+Dentro de la misma carpeta está el manifiesto para ejecutar y buildear el proyecto en docker. 
+Lo más importante del proyecto  : 
+* /models - donde se encuentran los modelos de usuario y url. 
+* /resources - donde están las clases que controlan los endpoints.
+* app.py - el punto de entrada de la app 
+
+*  ### Frontend
+En la carpeta Frontend, está todo el proyecto en Angular. Si se quiere correr de forma local hay que instalar, primero, la CLI de Angular posterior a  instalar Node js con el siguiente comando: 
+```
+	npm install -g @angular/cli
+```
+
+y Para servir el proyecto podemos ocupar :
+```
+	ng serve -o
+```
+ 
+Antes, sin embargo, hay que alzar el proyecto de Flask y en la carpeta de enviroment, en el archivo de enviroment.prod o enviroment (dependiendo si está en producción o en desarrollo, hay que cambiar el apiURL al url de flask. 
+
+
+
+## Deploy con Docker compose 
+
+Para deployar el proyecto con docker compose, solo debemos correr el siguiente comando  directamente en la raíz del proyecto : 
+```
+	docker-compose -f docker-compose.yml up --build
+```
+Si se necesita builder antes el frontend, se utilizaría desde la raíz del proyecto: 
+```
+cd frontend && ng build --prod && cd .. && docker-compose -f docker-compose.yml up --build
+```
+
+El proyecto fue hecho con :heart: 

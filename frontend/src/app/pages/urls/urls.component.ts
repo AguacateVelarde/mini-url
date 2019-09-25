@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { LoginService } from 'src/app/services/login.service';
 import { LocalstorageService } from 'src/app/services/localstorage.service';
 import { Router } from '@angular/router';
+import { environment } from '../../../environments/environment'
 import { UrlService } from 'src/app/services/url.service';
 declare var $;
 @Component({
@@ -16,7 +17,7 @@ export class UrlsComponent implements OnInit {
   password_login:string = ''
   error:string = ''
   urls : Array<any> = []
-  domain: string = 'http://localhost:5000/u/'
+  domain: string = environment.apiURL
   url_modal:string = ''
   error_modal:string = ''
   error_login:string = ''
@@ -86,7 +87,7 @@ export class UrlsComponent implements OnInit {
   }
 
   open( url ){
-    window.open(this.domain + url ,'_blank')
+    window.open(this.domain + '/' + url ,'_blank')
   }
 
   deleteSession(){
