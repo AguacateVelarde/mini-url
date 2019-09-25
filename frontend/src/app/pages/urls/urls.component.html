@@ -15,27 +15,14 @@
       </tr>
     </thead>
     <tbody class="text-center">
-      <tr>
-        <td>Mark</td>
-        <td>Otto</td>
+      <tr *ngFor="let item of urls">
+        <td>{{ item.url }}</td>
+        <td> {{ domain + item.shorted_id }}</td>
         <td>
-          <button class="btn-sm btn-primary"> Abrir link </button>
+          <button class="btn-sm btn-primary" (click)="open( item.shorted_id ) "> Abrir link </button>
         </td>
       </tr>
-      <tr>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td>
-          <button class="btn-sm btn-primary"> Abrir link </button>
-        </td>
-      </tr>
-      <tr>
-        <td>Larry</td>
-        <td>the Bird</td>
-        <td>
-          <button class="btn-sm btn-primary"> Abrir link </button>
-        </td>
-      </tr>
+  
     </tbody>
   </table>
 </div>
