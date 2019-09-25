@@ -44,4 +44,13 @@ Si se necesita builder antes el frontend, se utilizaría desde la raíz del proy
 cd frontend && ng build --prod && cd .. && docker-compose -f docker-compose.yml up --build
 ```
 
+## Decisiones 
+
+El proyecto se comenzó pensando desde el backend. Flask es un micro framework que, a comparación de otros, ofrece herramientas suficientes y rápidas para hacer Servicios web como rest apis. 
+La arquitectura está pensada para desacoplar todos los componentes, y organizar cada recurso de forma que fuera suficientemente lógica para encontrarlos. Utilicé SQLite por el cantidad mínima de datos que se iban a utilizar. 
+E implementé un inicio de sesión y registro con JWT por la rapidez y las herramientas ya creadas que ayudan a ser eficientes como es el caso de *flask_jwt_extended*. 
+Para el frontend, se utilizó Angular por la experiencia que se tiene y el corto tiempo de implementación. Se integró con Bootstrap 4 y se aplicaron algunos estilos. Se crearon dos rutas y varios componentes y servicios que se conectaron al backend en flask. 
+Finalmente se dockerizó la aplicación con dos contenedores, uno en nginx que funciona como proxy reverso y servidor web para Angular, y otro que alza flask.  
+
+
 El proyecto fue hecho con :heart: 
