@@ -1,36 +1,115 @@
-<div class="container pt-5" *ngIf="login">
-  <h1 class="pb-5"> Tus acortadores</h1>
+<div class="container pt-5" *ngIf="!login">
+  <div class="pb-3 d-flex justify-contetn-center align-items-center">
+    <h1> Tus acortadores</h1>
+    <h3 class="ml-3">
+      <button data-toggle="modal" data-target="#exampleModalScrollable" class="btn btn-link"> Agregar nuevo url
+      </button>
+    </h3>
+  </div>
+  <table class="table table-sm table-dark table-hover">
+    <thead class="text-center font-weight-bolder">
+      <tr>
+        <th scope="col">Url</th>
+        <th scope="col">Acortador</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody class="text-center">
+      <tr>
+        <td>Mark</td>
+        <td>Otto</td>
+        <td>
+          <button class="btn-sm btn-primary"> Abrir link </button>
+        </td>
+      </tr>
+      <tr>
+        <td>Jacob</td>
+        <td>Thornton</td>
+        <td>
+          <button class="btn-sm btn-primary"> Abrir link </button>
+        </td>
+      </tr>
+      <tr>
+        <td>Larry</td>
+        <td>the Bird</td>
+        <td>
+          <button class="btn-sm btn-primary"> Abrir link </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
-    <table class="table table-sm table-dark table-hover">
-        <thead class="text-center font-weight-bolder">
-          <tr>
-            <th scope="col">Url</th>
-            <th scope="col">Acortador</th>
-            <th scope="col"></th>
-          </tr>
-        </thead>
-        <tbody class="text-center">
-          <tr>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>
-              <button class="btn-sm btn-primary"> Abrir link </button>
-            </td>
-          </tr>
-          <tr>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>
-                <button class="btn-sm btn-primary"> Abrir link </button>
-              </td>
-          </tr>
-          <tr>
-            <td>Larry</td>
-            <td>the Bird</td>
-            <td>
-                <button class="btn-sm btn-primary"> Abrir link </button>
-              </td>
-          </tr>
-        </tbody>
-      </table>
+<div *ngIf="login">
+  <div *ngIf="type === 'LOGIN'" class="d-flex justify-content-center align-items-center">
+    <div class="small-middle-container">
+      <h2 class="mb-3"> Inicia Sesión </h2>
+      <div class="row">
+        <div class="col-md-6">
+          <input type="email" [(ngModel)]="email_login" class="form-control" placeholder="Escribe tu email">
+        </div>
+        <div class="col-md-6">
+          <input type="password" [(ngModel)]="password_login" class="form-control" placeholder="Escribe tu contraseña">
+        </div>
+        <div class="col-md-12 text-center">
+          <button class="btn-primary btn mt-5" (click)="doLogin()"> Iniciar sesión </button>
+        </div>
+        <div class="col-md-12 text-center">
+          <button class="btn-link btn" (click)="type='LOGOUT'"> Regístrate </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div *ngIf="type === 'LOGOUT'" class="d-flex justify-content-center align-items-center">
+    <div class="small-middle-container">
+      <h2 class="mb-3"> Registrate </h2>
+      <div class="row">
+        <div class="col-md-12">
+          <input type="email" class="form-control mb-3" placeholder="Escribe tu email">
+        </div>
+        <div class="col-md-6">
+          <input type="password" class="form-control" placeholder="Escribe tu contraseña">
+        </div>
+        <div class="col-md-6">
+          <input type="password" class="form-control" placeholder="Confirma tu contraseña">
+        </div>
+        <div class="col-md-12 text-center">
+          <button class="btn-primary btn mt-5"> Regístrate </button>
+        </div>
+        <div class="col-md-12 text-center">
+          <button class="btn-link btn" (click)="type='LOGIN'"> Inicia sesión </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+<div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog"
+  aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalScrollableTitle">Agregar nuevo url </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-12">
+            <input type="text" class="form-control" placeholder="Escribe tu url">
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-sm btn-primary">Agregar url</button>
+      </div>
+    </div>
+  </div>
 </div>

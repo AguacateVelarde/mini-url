@@ -7,7 +7,7 @@ export class LocalstorageService {
   storage : any = window.localStorage;
   jwt : string = ''
   constructor() { 
-    this.jwt = JSON.parse( this.storage.getItem('jwt-user') ) || ''
+    this.jwt =  this.storage.getItem('jwt-user') || ''
   }
 
   saveJWT ( jwt :string ){

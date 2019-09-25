@@ -1,5 +1,5 @@
 <div class="d-flex justify-content-center align-items-center flex-column p-5 m-bet">
   <h1 class="text-center"> My mini url </h1>
   <img src="assets/emoji.png" class="img-fluid logo" alt="">
-  <button class="btn btn-round btn-primary"> Inicia Sesión  o regístrate</button>
+  <button *ngIf="localstorage.jwt == ''" class="btn btn-round btn-primary" (click)="log()"> Inicia Sesión  o regístrate</button>
 </div>

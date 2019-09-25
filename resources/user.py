@@ -43,6 +43,7 @@ class Login(Resource):
         email = args['email']
         
         temporal_user = UserModel.get_by_email( email )
+        print( temporal_user )
         if temporal_user is None: 
             return {
                'message' : 'Email no encontrado',
