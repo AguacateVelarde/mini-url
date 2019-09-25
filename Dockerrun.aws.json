@@ -1,0 +1,72 @@
+{
+    "AWSEBDockerrunVersion": 2,
+    "volumes": [
+      {
+        "name": "flask",
+        "host": {
+          "sourcePath": "/usr/src/app/"
+        }
+      },
+      {
+        "name": "nginx-proxy-conf",
+        "host": {
+          "sourcePath": "/etc/nginx/nginx.conf"
+        }
+      }
+    ],
+    "containerDefinitions": [
+      {
+        "name": "flask",
+        "image": "flask",
+        "environment": [
+          {
+            "name": "Container",
+            "value": "flask"
+          }
+        ],
+        "essential": true,
+        "memory": 128,
+        "mountPoints": [
+          {
+            "sourceVolume": "flask",
+            "containerPath": "/usr/src/app/",
+            "readOnly": true
+          }
+        ]
+      },
+      {
+        "name": "nginx-proxy",
+        "image": "nginx",
+        "essential": true,
+        "memory": 128,
+        "portMappings": [
+          {
+            "hostPort": 80,
+            "containerPort": 80
+          },{
+            "hostPort": 5000,
+            "containerPort": 5000
+          }
+        ],
+        "links": [
+          "flask"
+        ],
+        "mountPoints": [
+          {
+            "sourceVolume": "flask",
+            "containerPath": "/usr/src/app/",
+            "readOnly": true
+          },
+          {
+            "sourceVolume": "nginx-proxy-conf",
+            "containerPath": "/etc/nginx/conf.d",
+            "readOnly": true
+          },
+          {
+            "sourceVolume": "awseb-logs-nginx-proxy",
+            "containerPath": "/var/log/nginx"
+          }
+        ]
+      }
+    ]
+  }
