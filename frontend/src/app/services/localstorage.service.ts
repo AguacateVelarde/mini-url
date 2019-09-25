@@ -13,4 +13,7 @@ export class LocalstorageService {
   saveJWT ( jwt :string ){
     this.storage.setItem( 'jwt-user', jwt )
   }
+  deleteJWT( ){
+    this.storage.removeItem( 'jwt-user' )
+  }
 }

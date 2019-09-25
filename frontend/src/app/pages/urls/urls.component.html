@@ -25,6 +25,7 @@
   
     </tbody>
   </table>
+  <button class="btn btn-link" (click)="deleteSession()">Cerrar sesión</button>
 </div>
 
 <div *ngIf="login">
@@ -32,6 +33,11 @@
     <div class="small-middle-container">
       <h2 class="mb-3"> Inicia Sesión </h2>
       <div class="row">
+          <div class="col-md-12">
+              <div class="alert alert-danger mt-3" role="alert" *ngIf="error_login != ''">
+                  {{ error_login }}
+                 </div>
+          </div>
         <div class="col-md-6">
           <input type="email" [(ngModel)]="email_login" class="form-control" placeholder="Escribe tu email">
         </div>
@@ -54,16 +60,21 @@
       <h2 class="mb-3"> Registrate </h2>
       <div class="row">
         <div class="col-md-12">
-          <input type="email" class="form-control mb-3" placeholder="Escribe tu email">
+            <div class="alert alert-danger mt-3" role="alert" *ngIf="error_register != ''">
+                {{ error_register }}
+               </div>
+        </div>
+        <div class="col-md-12">
+          <input type="email"  [(ngModel)]="email_register" class="form-control mb-3" placeholder="Escribe tu email">
         </div>
         <div class="col-md-6">
-          <input type="password" class="form-control" placeholder="Escribe tu contraseña">
+          <input type="password" [(ngModel)]="password_register" class="form-control" placeholder="Escribe tu contraseña">
         </div>
         <div class="col-md-6">
-          <input type="password" class="form-control" placeholder="Confirma tu contraseña">
+          <input type="password" [(ngModel)]="confirm_register" class="form-control" placeholder="Confirma tu contraseña">
         </div>
         <div class="col-md-12 text-center">
-          <button class="btn-primary btn mt-5"> Regístrate </button>
+          <button class="btn-primary btn mt-5" (click)="doRegister()"> Regístrate </button>
         </div>
         <div class="col-md-12 text-center">
           <button class="btn-link btn" (click)="type='LOGIN'"> Inicia sesión </button>
@@ -89,14 +100,20 @@
       <div class="modal-body">
         <div class="row">
           <div class="col-md-12">
-            <input type="text" class="form-control" placeholder="Escribe tu url">
+            <input [(ngModel)]="url_modal" type="text" class="form-control" placeholder="Escribe tu url">
+            <div class="alert alert-danger mt-3" role="alert" *ngIf="error_modal != ''">
+               {{ error_modal }}
+              </div>
           </div>
         </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-sm btn-primary">Agregar url</button>
+        <button type="button" class="btn btn-sm btn-primary" (click)="sendUrl()">Agregar url</button>
       </div>
     </div>
   </div>
+
+      
 </div>
+
